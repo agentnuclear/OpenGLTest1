@@ -1,3 +1,5 @@
+![OpenGL Logo](https://www.techno-science.net/illustration/Definition/200px/OpenGL-logo.png)
+
 **Just a Demo Repo for me to play around and learn OpenGL**
 
 **So What’s This About?** 🤔
