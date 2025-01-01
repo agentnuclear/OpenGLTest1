@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\Projects\\GL\\OpenGLTest1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|solutionrelative:OpenGLTest1\\src\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|solutionrelative:OpenGLTest1\\src\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|solutionrelative:OpenGLTest1\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\res\\Shaders\\Basic.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|solutionrelative:OpenGLTest1\\res\\Shaders\\Basic.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|solutionrelative:OpenGLTest1\\src\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|solutionrelative:OpenGLTest1\\src\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4182B9CE-C96C-4766-B5A9-2F35570BB057}|OpenGLTest1\\OpenGLTest1.vcxproj|D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\VertexArray.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -62,24 +62,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Shader.cpp",
               "DocumentMoniker": "D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Shader.cpp",
               "RelativeDocumentMoniker": "OpenGLTest1\\src\\Shader.cpp",
               "ToolTip": "D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Shader.cpp",
               "RelativeToolTip": "OpenGLTest1\\src\\Shader.cpp",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAawCYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAawDEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-01T12:11:35.561Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Shader.h",
               "DocumentMoniker": "D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Shader.h",
               "RelativeDocumentMoniker": "OpenGLTest1\\src\\Shader.h",
@@ -87,8 +87,7 @@
               "RelativeToolTip": "OpenGLTest1\\src\\Shader.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-01T12:11:24.988Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T12:11:24.988Z"
             },
             {
               "$type": "Document",
@@ -100,8 +99,7 @@
               "RelativeToolTip": "OpenGLTest1\\src\\VertexArray.cpp",
               "ViewState": "AgIAAA0AAAAAAAAAAAAMwBQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-01T08:14:54.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T08:14:54.171Z"
             },
             {
               "$type": "Document",
@@ -113,8 +111,7 @@
               "RelativeToolTip": "OpenGLTest1\\src\\VertexArray.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-01T07:52:12.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T07:52:12.364Z"
             },
             {
               "$type": "Document",
@@ -174,8 +171,7 @@
               "RelativeToolTip": "OpenGLTest1\\src\\Renderer.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-30T15:03:25.161Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-30T15:03:25.161Z"
             },
             {
               "$type": "Document",
@@ -187,8 +183,7 @@
               "RelativeToolTip": "OpenGLTest1\\src\\Renderer.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-30T15:03:11.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-30T15:03:11.609Z"
             },
             {
               "$type": "Document",
@@ -204,26 +199,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Basic.shader",
               "DocumentMoniker": "D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\res\\Shaders\\Basic.shader",
               "RelativeDocumentMoniker": "OpenGLTest1\\res\\Shaders\\Basic.shader",
               "ToolTip": "D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\res\\Shaders\\Basic.shader",
               "RelativeToolTip": "OpenGLTest1\\res\\Shaders\\Basic.shader",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-12-26T14:28:04.256Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Application.cpp",
               "DocumentMoniker": "D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Application.cpp",
               "RelativeDocumentMoniker": "OpenGLTest1\\src\\Application.cpp",
               "ToolTip": "D:\\Projects\\GL\\OpenGLTest1\\OpenGLTest1\\src\\Application.cpp",
               "RelativeToolTip": "OpenGLTest1\\src\\Application.cpp",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAuwH0AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAawGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-23T13:05:51.001Z",
               "EditorCaption": ""

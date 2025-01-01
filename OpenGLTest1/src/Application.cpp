@@ -101,7 +101,7 @@ int main(void)
 
         Shader shader("res/Shaders/Basic.shader");
         shader.Bind();
-        shader.SetUnifrom4f("u_color", 0.2f, 0.3f, 0.1f, 1.0f);
+        shader.SetUnifrom4f("u_Color", 0.2f, 0.3f, 0.1f, 1.0f);
 
 
         va.UnBind();
