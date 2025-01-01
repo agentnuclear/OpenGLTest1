@@ -1,6 +1,6 @@
 ![OpenGL Logo](https://www.techno-science.net/illustration/Definition/200px/OpenGL-logo.png)
 
-**Just a Demo Repo for me to play around and learn OpenGL**
+## Just a Demo Repo for me to play around and learn OpenGL
 
 **So What’s This About?** 🤔
 
@@ -17,3 +17,11 @@ This is mostly for my personal experiments, but if you’re here and feel like a
 - Open an issue.
 - Submit a pull request.
 - Or just laugh at my code in silence.
+
+## Visual Updates :
+Here is the progress stuff essentially , what all i am making as i go forward.  
+
+**01/01/25 <br>**
+![Blinking Rectangle : 01_01_25_Output](VisualUpdates/01_01_25_Output.gif)<br>
+>Following [TheCherno](https://www.youtube.com/@TheCherno) on YT and created a blinking rectangle comprised of two triangles made using Index Buffers and drawn with the help of the Fragment and Vertex Shader.
+Nothing Special but an amazing start to start drawing stuff.(this repo was created after some time of starting with the tutorials so everything is pretty classified in their respective files).
