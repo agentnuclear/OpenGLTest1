@@ -1,6 +1,9 @@
 #pragma once
 
 #include <GL/glew.h>
+#include "VertexArray.h"
+#include "IndexBuffer.h"
+#include "Shader.h"
 
 #define ASSERT(x) if (!(x)) __debugbreak();
 
@@ -10,3 +13,12 @@ void GLClearError();
 
 // int will be returned but the errors can be found in glew.h but in hexadecimal format :: convert error code to hexadecimal 
 bool GLLogCall(const char* function, const char* file, int line);
+
+class Renderer
+{
+private:
+
+public:
+	void Clear() const;
+	void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const;
+};

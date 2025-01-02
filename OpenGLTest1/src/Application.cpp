@@ -8,6 +8,7 @@
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"
+#include "VBLayout.h"
 #include "Shader.h"
 
 
@@ -109,6 +110,7 @@ int main(void)
         vb.Unbind();
         ib.Unbind();
 
+        Renderer renderer;
  
         //temp var to change color
         float r = 0.0f;
@@ -120,18 +122,18 @@ int main(void)
             shader.Bind(); // Use the shader program
             glEnableVertexAttribArray(0);
             /* Render here */
-            glClear(GL_COLOR_BUFFER_BIT);
-
+            renderer.Clear();
             //Draw call to draw a triangle using vertex buffer
             //glDrawArrays(GL_TRIANGLES, 0, 6); 
 
             //Changing colors on every draw 
             //Uniforms can be refreshed on every draw
             shader.SetUnifrom4f("u_Color", r, 0.2f, 0.1f, 1.0f);
-            va.Bind();
-            ib.Bind();
                 //Draw call to draw a triangle using index buffer
-                GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+                //GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+          
+            //using the renderer class to draw 
+            renderer.Draw(va, ib, shader);
 
             //changing r val
             if (r > 1.0f)

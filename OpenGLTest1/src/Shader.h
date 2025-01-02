@@ -4,9 +4,10 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <fstream>
-#include <unordered_map>
-#include "Renderer.h"
 #include <sstream>
+#include <unordered_map>
+
+
 
 //Structure for fetching shaders from a single shader file
 struct ShaderProgramSource

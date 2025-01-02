@@ -1,7 +1,9 @@
 #pragma once
 
 #include "VertexBuffer.h"
-#include "VBLayout.h"
+
+
+class VBLayout;
 
 class VertexArray
 {
