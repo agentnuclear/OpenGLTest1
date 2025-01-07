@@ -34,11 +34,12 @@ public:
 	void UnBind() const;
 
 	//Set Unifroms , as needed we add more here 
+	void SetUniform1i(const std::string& name, int value);
 	void SetUniform1f(const std::string& name, float value);
 	void SetUnifrom4f(const std::string& name, float v0, float v1, float v2, float v3);
 
 private: 
-	unsigned int GetUniformLocation(const std::string& name);
+	int GetUniformLocation(const std::string& name);
 	unsigned int CreateShader(const std::string& VertexShader, const std::string& FragmentShader);
 	unsigned int CompileShader(unsigned int type, const std::string& source);
 	ShaderProgramSource ParseShader(const std::string& filepath);

@@ -10,6 +10,7 @@
 #include "VertexArray.h"
 #include "VBLayout.h"
 #include "Shader.h"
+#include "Texture.h"
 
 
 
@@ -66,6 +67,8 @@ int main(void)
     else
     {
         std::cout << "OpenGL ver. " << glGetString(GL_VERSION) << std::endl;
+        std::cout << "Texture Units Supported : " << GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS << std::endl;
+
     }
    
         //For Legacy Triangle Input
@@ -77,10 +80,10 @@ int main(void)
 
 
         float positions[] = {
-            -0.5f, -0.5f // 0
-            ,0.5f, -0.5f // 1
-            ,0.5f,  0.5f // 2 
-            ,-0.5f, 0.5f // 3
+            -0.5f, -0.5f , 0.0f, 0.0f// 0
+            ,0.5f, -0.5f , 1.0f, 0.0f// 1
+            ,0.5f,  0.5f , 1.0f, 1.0f// 2 
+            ,-0.5f, 0.5f , 0.0f, 1.0f// 3
         };
 
         //Indices for a Index Buffer
@@ -89,10 +92,14 @@ int main(void)
             2,3,0
         };
 
+        GLCall(glEnable(GL_BLEND));
+        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+       
         VertexArray va;
         //Vertex Buffer now in "VertexBuffer.cpp"
-        VertexBuffer vb(positions, 4 * 2 * sizeof(float));
+        VertexBuffer vb(positions, 4 * 4 * sizeof(float));
         VBLayout layout;
+        layout.Push<float>(2);
         layout.Push<float>(2);
         va.AddBuffer(vb, layout);
         //glEnableVertexAttribArray(0);
@@ -104,6 +111,9 @@ int main(void)
         shader.Bind();
         shader.SetUnifrom4f("u_Color", 0.2f, 0.3f, 0.1f, 1.0f);
 
+        Texture texture("res/Textures/image2.png");
+        texture.Bind();
+        shader.SetUniform1i("u_Texture", 0);
 
         va.UnBind();
         shader.UnBind();
@@ -129,6 +139,7 @@ int main(void)
             //Changing colors on every draw 
             //Uniforms can be refreshed on every draw
             shader.SetUnifrom4f("u_Color", r, 0.2f, 0.1f, 1.0f);
+            
                 //Draw call to draw a triangle using index buffer
                 //GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
           

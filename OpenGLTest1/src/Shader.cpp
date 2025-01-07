@@ -31,6 +31,12 @@ void Shader::UnBind() const
     GLCall(glUseProgram(0));
 }
 
+void Shader::SetUniform1i(const std::string& name, int value)
+{
+    GLCall(glUniform1i(GetUniformLocation(name), value));
+
+}
+
 void Shader::SetUniform1f(const std::string& name, float value)
 {
     GLCall(glUniform1f(GetUniformLocation(name), value));
@@ -40,19 +46,6 @@ void Shader::SetUnifrom4f(const std::string& name, float v0, float v1, float v2,
 {
     GLCall(glUniform4f(GetUniformLocation(name), v0, v1, v2, v3));
 }
-
-unsigned int Shader::GetUniformLocation(const std::string& name)
-{
-    if (m_UnifromLocationCache.find(name) != m_UnifromLocationCache.end())
-        return m_UnifromLocationCache[name];
-    GLCall(int location = glGetUniformLocation(m_RenderedID, name.c_str()));
-    if (location == -1)
-        std::cout << "Warning: unifrom ' " << name << "'dosen't exist" << std::endl;
-
-    m_UnifromLocationCache[name] = location;
-	return location;
-}
-
 
 ShaderProgramSource Shader :: ParseShader(const std::string& filepath)
 {
@@ -111,6 +104,18 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
 
     }
     return id;
+}
+
+int Shader::GetUniformLocation(const std::string& name)
+{
+    if (m_UnifromLocationCache.find(name) != m_UnifromLocationCache.end())
+        return m_UnifromLocationCache[name];
+    GLCall(int location = glGetUniformLocation(m_RenderedID, name.c_str()));
+    if (location == -1)
+        std::cout << "Warning: unifrom ' " << name << "'dosen't exist" << std::endl;
+
+    m_UnifromLocationCache[name] = location;
+    return location;
 }
 
 unsigned int Shader::CreateShader(const std::string& VertexShader, const std::string& FragmentShader)
