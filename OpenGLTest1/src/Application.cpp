@@ -11,7 +11,9 @@
 #include "VBLayout.h"
 #include "Shader.h"
 #include "Texture.h"
-
+// GL Math Lib Includes
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 
 
@@ -47,7 +49,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(960, 540, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate(); 
@@ -80,10 +82,10 @@ int main(void)
 
 
         float positions[] = {
-            -0.5f, -0.5f , 0.0f, 0.0f// 0
-            ,0.5f, -0.5f , 1.0f, 0.0f// 1
-            ,0.5f,  0.5f , 1.0f, 1.0f// 2 
-            ,-0.5f, 0.5f , 0.0f, 1.0f// 3
+             200.0f, 200.0f , 0.0f, 0.0f// 0
+            ,400.0f, 200.0f , 1.0f, 0.0f// 1
+            ,400.0f, 400.0f , 1.0f, 1.0f// 2 
+            ,200.0f, 400.0f , 0.0f, 1.0f// 3
         };
 
         //Indices for a Index Buffer
@@ -92,8 +94,8 @@ int main(void)
             2,3,0
         };
 
-        GLCall(glEnable(GL_BLEND));
-        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+       GLCall(glEnable(GL_BLEND));
+       GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
        
         VertexArray va;
         //Vertex Buffer now in "VertexBuffer.cpp"
@@ -107,9 +109,21 @@ int main(void)
         //Index Buffer Implementation
         IndexBuffer ib(indices, 6);
 
+        // Creating view projection matrix.
+        // here we are projecting on per pixel basis , hence the change in above position coordinates.
+        glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f);
+        // view matrix
+        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(-100, 0, 0));
+        // model matrix
+        glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(100, 100, 0));
+
+        glm::mat4 mvp = proj * view * model;
+
         Shader shader("res/Shaders/Basic.shader");
         shader.Bind();
         shader.SetUnifrom4f("u_Color", 0.2f, 0.3f, 0.1f, 1.0f);
+        //Setting MVP to the shader
+        shader.SetUnifromMat4f("u_MVP", mvp);
 
         Texture texture("res/Textures/image2.png");
         texture.Bind();
@@ -139,6 +153,7 @@ int main(void)
             //Changing colors on every draw 
             //Uniforms can be refreshed on every draw
             shader.SetUnifrom4f("u_Color", r, 0.2f, 0.1f, 1.0f);
+          
             
                 //Draw call to draw a triangle using index buffer
                 //GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
