@@ -40,4 +40,4 @@ Apart from that we also updated our vertex and fragment shader to draw the textu
 
 **30/01/25 <br>**
 ![ImGUI Implementation OpenGL : 30_01_25_Output](VisualUpdates/30_01_25_Output.gif)<br>
-Included ImGUI to ease some debugging and to experiment with values on application runtime. Added Sliders to manipulate transform values for the rendered objects.
+>Included ImGUI to ease some debugging and to experiment with values on application runtime. Added Sliders to manipulate transform values for the rendered objects.
