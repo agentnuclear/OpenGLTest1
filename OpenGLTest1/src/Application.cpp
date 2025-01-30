@@ -2,7 +2,8 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <fstream>
-#include<string>
+#include <string>
+#include <stdio.h>
 #include <sstream>
 #include "Renderer.h"
 #include "VertexBuffer.h"
@@ -14,31 +15,11 @@
 // GL Math Lib Includes
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+//imgui
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
 
-
-
-
-void LegacyDrawTriangle(float a, float b, float c, float d, float e, float f, GLFWwindow* window)
-{
-    while (!glfwWindowShouldClose(window))
-    {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        //Legacy OpenGL Implementation
-      /*  glBegin(GL_TRIANGLES);
-        glVertex2f(a, b);
-        glVertex2f(c, d);
-        glVertex2f(e, f);
-        glEnd();*/
-
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
-
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
-}
 
 int main(void)
 {
@@ -72,20 +53,13 @@ int main(void)
         std::cout << "Texture Units Supported : " << GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS << std::endl;
 
     }
-   
-        //For Legacy Triangle Input
-     /*  float a, b, c, d, e, f;
-        std::cin >> a >> b >> c >> d >> e >> f;
-        std::getchar;
-        std::cout << a;
-        LegacyDrawTriangle(a, b, c, d, e, f, window);*/
 
 
         float positions[] = {
-             200.0f, 200.0f , 0.0f, 0.0f// 0
-            ,400.0f, 200.0f , 1.0f, 0.0f// 1
-            ,400.0f, 400.0f , 1.0f, 1.0f// 2 
-            ,200.0f, 400.0f , 0.0f, 1.0f// 3
+             -50.0f, -50.0f , 0.0f, 0.0f// 0
+            ,50.0f, -50.0f , 1.0f, 0.0f// 1
+            ,50.0f, 50.0f , 1.0f, 1.0f// 2 
+            ,-50.0f, 50.0f , 0.0f, 1.0f// 3
         };
 
         //Indices for a Index Buffer
@@ -104,7 +78,6 @@ int main(void)
         layout.Push<float>(2);
         layout.Push<float>(2);
         va.AddBuffer(vb, layout);
-        //glEnableVertexAttribArray(0);
 
         //Index Buffer Implementation
         IndexBuffer ib(indices, 6);
@@ -113,17 +86,13 @@ int main(void)
         // here we are projecting on per pixel basis , hence the change in above position coordinates.
         glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f);
         // view matrix
-        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(-100, 0, 0));
-        // model matrix
-        glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(100, 100, 0));
+        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 
-        glm::mat4 mvp = proj * view * model;
 
         Shader shader("res/Shaders/Basic.shader");
         shader.Bind();
         shader.SetUnifrom4f("u_Color", 0.2f, 0.3f, 0.1f, 1.0f);
-        //Setting MVP to the shader
-        shader.SetUnifromMat4f("u_MVP", mvp);
+
 
         Texture texture("res/Textures/image2.png");
         texture.Bind();
@@ -135,7 +104,34 @@ int main(void)
         ib.Unbind();
 
         Renderer renderer;
+
+        //imgui context creation
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+        ImGuiIO& io = ImGui::GetIO(); (void)io;
+        // Setup Platform/Renderer backends
+        ImGui_ImplGlfw_InitForOpenGL(window, true);
+        ImGui_ImplOpenGL3_Init("#version 410");
+        
+        // Setup ImGui style
+        ImGui::StyleColorsDark();
  
+        //vars for the imgui window
+        bool show_demo_window = true;
+        bool show_another_window = false;
+        ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+        // Transform values for Rendered Objects
+        glm::vec3 translationA(100, 100, 0);
+        glm::vec3 translationB(400, 400, 0);
+        glm::vec3 scaleA(1, 1, 1);
+        glm::vec3 scaleB(1, 1, 1);
+        //What axis we will be rotating on 
+        glm::vec3 RotAxis = glm::normalize(glm::vec3(0.0f, 0.0f, 1.0f));
+        float angleA = glm::radians(0.0f);
+        float angleB = glm::radians(0.0f);
+
+
         //temp var to change color
         float r = 0.0f;
         float increment = 0.05f;
@@ -143,23 +139,39 @@ int main(void)
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
-            shader.Bind(); // Use the shader program
+             // Use the shader program
             glEnableVertexAttribArray(0);
             /* Render here */
             renderer.Clear();
-            //Draw call to draw a triangle using vertex buffer
-            //glDrawArrays(GL_TRIANGLES, 0, 6); 
 
-            //Changing colors on every draw 
-            //Uniforms can be refreshed on every draw
-            shader.SetUnifrom4f("u_Color", r, 0.2f, 0.1f, 1.0f);
-          
+            // Start the Dear ImGui frame   
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
+
+            // Draw OBJ 1
+            {   
+                glm::mat4 model = glm::mat4(1.0f);
+                model = glm::translate(model, translationA);
+                model = glm::scale(model, scaleA);
+                model = glm::rotate(model, angleA, RotAxis);
+                glm::mat4 mvp = proj * view * model;
+                shader.Bind();
+                shader.SetUnifromMat4f("u_MVP", mvp);
+                renderer.Draw(va, ib, shader);
+            }
+            // Draw OBJ 2 
+            {
+                glm::mat4 model = glm::mat4(1.0f);
+                model = glm::translate(model, translationB);
+                model = glm::scale(model, scaleB);
+                model = glm::rotate(model, angleB, RotAxis);
+                glm::mat4 mvp = proj * view * model;
+                shader.Bind();
+                shader.SetUnifromMat4f("u_MVP", mvp);
+                renderer.Draw(va, ib, shader);
+            }
             
-                //Draw call to draw a triangle using index buffer
-                //GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
-          
-            //using the renderer class to draw 
-            renderer.Draw(va, ib, shader);
 
             //changing r val
             if (r > 1.0f)
@@ -169,12 +181,45 @@ int main(void)
 
             r += increment;
 
+          
+            {
+                static float f = 0.0f;
+                static int counter = 0;
+
+                ImGui::Begin("GL Debugger Slate");                
+                ImGui::Text("Object Translations");               
+                ImGui::Separator();
+                ImGui::Text("Object A");               
+                ImGui::SliderFloat3("Translation A", &translationA.x, 0.0f, 960.0f);           
+                ImGui::SliderFloat3("Scale A", &scaleA.x, 0.0f, 10.0f);            
+                ImGui::SliderAngle("Rotation A", &angleA, -360.0f, 360.0f);
+                ImGui::Spacing();
+                ImGui::Text("Object B");              
+                ImGui::SliderFloat3("Translation B", &translationB.x, 0.0f, 960.0f);
+                ImGui::SliderFloat3("Scale B", &scaleB.x, 0.0f, 100.0f);            
+                ImGui::SliderAngle("Rotation B", &angleB, -360.0f, 360.0f);
+                ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+                ImGui::End();
+            }
+
+            ImGui::Render();
+
+            int display_w, display_h;
+            glfwGetFramebufferSize(window, &display_w, &display_h);
+            glViewport(0, 0, display_w, display_h);
+            //glClear(GL_COLOR_BUFFER_BIT);
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
 
             /* Poll for and process events */
             glfwPollEvents();
         }
+
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
     glfwTerminate();
     return 0;
 }

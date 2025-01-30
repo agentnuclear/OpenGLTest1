@@ -36,3 +36,8 @@ Apart from that we also updated our vertex and fragment shader to draw the textu
 **29/01/25 <br>**
 ![Projection in OpenGL : 29_01_25_Output](VisualUpdates/29_01_25_Output.png)<br>
 >After a brief break (dont mention the gap , ik its been a while ;-;) continuing the road to OpenGL. Started of with understanding what projection matrices are and how they help while rendering on screen. Added GLM libray for mathematical operations in GL. Introduced an MVP matrix implementation where the vector coordinates are multiplied by the product of the Model, View, and Projection matrices to modify the position of the rendered object. The Model matrix contains the transformation values for the given object, the Projection matrix determines how the scene is projected (either orthographic or perspective), and the View matrix represents the camera’s transformation and how it affects the rendered scene
+
+
+**30/01/25 <br>**
+![ImGUI Implementation OpenGL : 30_01_25_Output](VisualUpdates/30_01_25_Output.gif)<br>
+Included ImGUI to ease some debugging and to experiment with values on application runtime. Added Sliders to manipulate transform values for the rendered objects.
