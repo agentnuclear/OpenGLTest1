@@ -44,7 +44,7 @@ Apart from that we also updated our vertex and fragment shader to draw the textu
 
 
 **30/01/25 <br>**
-![Test Cases Implementation OpenGL : 01_02_25_Output](VisualUpdates/30_01_25_Output.gif)<br>
+![Test Cases Implementation OpenGL : 01_02_25_Output](VisualUpdates/01_02_25_Output.gif)<br>
 >Added multiple test scenarios to make it easier for us to debug and experiemnt with snippets of examples. Made a base Test class which holds the function declarations which can further overrriden on the child classes.
 Each child class acts as a test case. Used ImGUI to create a simple on startup menu from which you can select what test case you want to run. We create the all the required references and variables when the class is created and delete them when its destroyed.
 Added a toggle in the shader code which switches between texture and color.
